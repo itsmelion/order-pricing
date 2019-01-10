@@ -1,0 +1,30 @@
+{
+  "name": "order-price",
+  "version": "1.0.0",
+  "description": "Shell command that receives input as arguments reads a file(.txt|.csv) with products, stock and pricing and provide total amount to pay for them after tax",
+  "main": "calculate-order.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": {
+    "CalculateOrder": "calculate-order.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/itsmelion/order-pricing.git"
+  },
+  "keywords": [
+    "shell",
+    "node",
+    "scripts",
+    "command-line",
+    "nodejs",
+    "alia"
+  ],
+  "author": "Christhopher Lion <christhopherleao@icloud.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/itsmelion/order-pricing/issues"
+  },
+  "homepage": "https://github.com/itsmelion/order-pricing#readme"
+}
