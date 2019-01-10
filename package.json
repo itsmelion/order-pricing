@@ -26,5 +26,8 @@
   "bugs": {
     "url": "https://github.com/itsmelion/order-pricing/issues"
   },
-  "homepage": "https://github.com/itsmelion/order-pricing#readme"
+  "homepage": "https://github.com/itsmelion/order-pricing#readme",
+  "dependencies": {
+    "csvtojson": "^2.0.8"
+  }
 }
