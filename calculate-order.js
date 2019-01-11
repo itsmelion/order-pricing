@@ -35,7 +35,7 @@ const itemPricing = (amount, catalog) => {
 
 (async () => {
   // Reads catalog csv file
-  const catalog = await getCatalog.catch(() => 'ok');
+  const catalog = await getCatalog;
 
   // calculate and accumulate every order amount
   const total = order.reduce((acc, amount, index) => {
