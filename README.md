@@ -1,5 +1,6 @@
 # Calculate the price of an order
 The total amount to be paid for a list of products
+https://github.com/itsmelion/order-pricing
 
 ## Installation
 Simply navigate to the project folder and install it `npm install -g --only=production`
