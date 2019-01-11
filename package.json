@@ -4,6 +4,7 @@
   "description": "Shell command that receives input as arguments reads a file(.txt|.csv) with products, stock and pricing and provide total amount to pay for them after tax",
   "main": "calculate-order.js",
   "scripts": {
+    "start": "npm link",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "bin": {

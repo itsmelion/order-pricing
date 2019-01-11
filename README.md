@@ -1,20 +1,22 @@
 # Calculate the price of an order
+The total amount to be paid for a list of products
 
-Given a CSV file with the following lines:
+## Installation
+Simply navigate to the project folder and install it `npm install -g --only=production`
+or `npm link`.
+
+OPTIONAL: you can also build and start docker container and log into its shell, and proceed to the usage normally.
+
+## Usage
+Provide a CSV file with the following lines:
 ```
 <ProductID>,<Stock>,<Price>
 ```
 
-Write a command line program that calculates the total price of an order given the following rules:
-* The total amount to be paid is the sum of the price of each product in the order multiplied by the quantity of each item in the order
-* Prices on the CSV file do not include VAT
-* The total amount to be paid must include VAT at the fixed rate of 23%
-* If a product is out of stock, the program must end with error code 1 and display a message
-
-## Command line interface
+### Command line interface
 The program must run from the command line with the following arguments
 ```
-CalculateOrder Path_to_catalog Product1 Quantity_P1 <Product2 Quantity_P2> ...
+CalculateOrder <path_to_catalog> <product1> <quantity1> <product2> <quantity2> ...
 ```
 
 ## Example
@@ -29,15 +31,3 @@ P12,5,1000.00
 $ CalculateOrder Catalog.txt P4 6 P10 5 P12 1
 Total: 4151,25
 ```
-
-## Deliverable
-We expect you to deliver a zip file containing the code that implements the solution for this problem.
-Plese provide clear instructions on how to build the application.
-
-## Programming languages
-We accept solutions implemented in one of the following programming languages:
-* C#
-* Java
-* Kotlin
-* Javascript
-* Python

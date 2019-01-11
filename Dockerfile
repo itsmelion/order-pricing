@@ -16,7 +16,7 @@ ENV NODE_ENV $NODE_ENV
 COPY package*.json /usr/src/app
 
 RUN npm cache verify && \
-npm install --only=production
+npm install -g --only=production
 
 ENV PATH /opt/node_modules/.bin:$PATH
 
