@@ -2,31 +2,36 @@
 // @ts-nocheck
 
 const csvParser = require('csvtojson');
+
 const vat = 23;
-
-console.info('Welcome to "Order Price Calculator"');
-
-// Order
-const args = process.argv.slice(3);
 const order = [];
-const catalog = await csvParser({ noheader:true }).fromFile(process.argv[2]);
-const itemPricing = index => {
-  // TODO: If a product is out of stock
-  console.error(`Item ${order[index][0]} is out of stock`);
-  process.exitCode = 1;
+const getCatalog = csvParser({ noheader: true, output: "csv" }).fromFile(process.argv[2]);
+let catalog;
 
-  // TODO: Calculate Price
-  catalog[index] order[index]
-
-  if (i = 0) return;
-};
-
-args.forEach((arg, i) => {
+process.argv.slice(3).forEach((arg, i) => {
   // Checks if argument is even, (Amount) so we can parse to a number.
-  if (!(i & 1)) return;
-  return order.push([order[i-1], arg]);
+  if ((i > 0) && (i & 1)) order.push(parseInt(arg, 10));
 });
 
-// TODO: Add VAT and output the result
-console.log(`Total: ${total}`);
-process.exit(0);
+const itemPricing = (amount, i) => {
+  let [item, stock, price] = catalog[i];
+  stock = parseInt(stock, 10);
+  price = Number(price);
+
+  // If a product is out of stock
+  if (amount > stock) {
+    console.error(`Item ${item} is out of stock`);
+    process.exit(1);
+  }
+
+  // Calculate the item price
+  return Number(price) * amount;
+};
+
+(async () => {
+  catalog = await getCatalog;
+  const total = order.reduce((acc, amount, index) => acc + itemPricing(amount, index), 0)
+
+  console.log(`Total: ${total + total * (vat / 100)}`);
+  process.exit(0);
+})();
