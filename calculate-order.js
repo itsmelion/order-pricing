@@ -5,7 +5,11 @@ const csvParser = require('csvtojson');
 const vat = 23;
 
 const getCatalog = csvParser({ noheader: true, output: "csv" })
-  .fromFile(process.argv[2]);
+  .fromFile(process.argv[2])
+  .then().catch(err => {
+    console.error('❌ File not found\n', err);
+    process.exit(1);
+  });
 
 const order = process.argv.slice(3).reduce((acc, arg, i) => {
   // Checks if argument is even, (Amount) so we can parse to a number.
@@ -31,7 +35,7 @@ const itemPricing = (amount, catalog) => {
 
 (async () => {
   // Reads catalog csv file
-  const catalog = await getCatalog;
+  const catalog = await getCatalog.catch(() => 'ok');
 
   // calculate and accumulate every order amount
   const total = order.reduce((acc, amount, index) => {
